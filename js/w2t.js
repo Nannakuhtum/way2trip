@@ -1,7 +1,7 @@
 //Global namespace
 var w2t = {
     animateTime: 600,
-    $showing: $('#main'),
+    $showing: null,
     screenShowEasing: 'easeOutExpo',
 
     partsBaseUrl: 'parts/',
@@ -26,21 +26,38 @@ var w2t = {
         }
     },
 
+    getRoute: function(section, isPackage){
+        if(!section) return null;
+
+        if(isPackage) {
+            return {
+                url: this.partsBaseUrl + '/packages/' + section + '.html'
+            }
+        } else {
+            return this.route[section];
+        }
+    },
+
     //These functions have to be called after dom ready
     showSection: function (sectionName, args) {
+        console.log(sectionName, args);
         sectionName = sectionName || 'main';
-        var $section = $('#' + sectionName), animate = args && args.animate || true; ;
+        var $section = $('#' + sectionName), animate = args && args.animate || true;
 
         function show() {
-            $section.slideDown(animate && w2t.animateTime, w2t.screenShowEasing);
-            w2t.$showing.slideUp(animate && w2t.animateTime, w2t.screenShowEasing);
+            w2t.$showing = w2t.$showing || $('#main');          
+
+            $section.appendTo(document.body);//this to bottom of the body, so animation is always slideUp
+
+            w2t.$showing.slideUp(animate && w2t.animateTime, w2t.screenShowEasing);//hide
+            $section.slideDown(animate && w2t.animateTime, w2t.screenShowEasing);//show
 
             w2t.$showing = $section;
         }
 
         if (!$section.length) {
-            $.get(this.route[sectionName].url, {
-                time: new Date()
+            $.get(this.getRoute(sectionName, args && args.isPackage).url, {
+                time: Math.random
             }, function (data) {
                 $('body').append(data);
                 $section = $('#' + sectionName);
@@ -66,16 +83,8 @@ var w2t = {
     },
 
     packageClick: function () {
-        var thisPackage = $(this).data('package');
-
-        switch (true) {
-            case thisPackage && thisPackage.toLowerCase() === 'dubai':
-                w2t.showSection('packageDesc');
-                break;
-            default:
-                console.log('no package defined');
-                break;
-        }
+        var section = $(this).data('package');
+        History.pushState({ section: section }, 'Way2Trip - ' + section.toUpperCase(), "?section=" + section);
     }
 };
 
@@ -116,12 +125,11 @@ $(function () {
 
         requestAnimationFrame(step);
     }
-    requestAnimationFrame(step);
+    //requestAnimationFrame(step);
 
     /* State Change Listener */
     History.Adapter.bind(window, 'statechange', function () {
         var State = History.getState(), section = State.data && State.data.section;
-        console.log(State);
         switch (true) {
             case section === 'international' || section === 'domestic':
                 w2t.showSection(section, {
@@ -130,6 +138,11 @@ $(function () {
                             .click(w2t.packageClick)
                             .each(w2t.columnHover);
                     }
+                })
+                break;
+            case /^(d-|i-)/.test(section): //Starts with d- or i-
+                w2t.showSection(section, {
+                    isPackage: true
                 })
                 break;
             default:
@@ -160,8 +173,10 @@ $(function () {
 w2t.utils = {
     getParameterByName: function (name) {
         name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), searchStr = location.search || location.hash,
+        results = regex.exec(searchStr);
+        
+        console.log(searchStr);
         return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 }
