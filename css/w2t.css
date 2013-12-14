@@ -43,6 +43,13 @@ body {
     transition: box-shadow 0.2s ease-in-out;
 }
 
+
+.w2t-content:hover{
+    background: #E3F1FC;
+    box-shadow: 0 0 5px #A7D4FC;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
 /*Image Hover*/
 .da-thumbs figure {
     float: left;
@@ -107,4 +114,9 @@ body {
 .dbi
 {
     display: inline-block;
+}
+
+.dn
+{
+    display:  none
 }
