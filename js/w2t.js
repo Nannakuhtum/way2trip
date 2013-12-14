@@ -116,9 +116,9 @@ var w2t = {
 
 //Dom On Ready
 $(function () {
-    var topPx = 0, leftPx = 0, sp = 0.1, urlParamSection;
+    var topPx = 0, leftPx = 0, sp = 1, urlParamSection;
 
-    /*function step(timestamp) {
+    function step(timestamp) {
         leftPx = leftPx % 1680 - sp;
         topPx = topPx % 1050 - sp;
         $('body').css('backgroundPosition', leftPx + 'px ' + topPx + 'px');
@@ -126,7 +126,7 @@ $(function () {
         requestAnimationFrame(step);
     }
 
-    requestAnimationFrame(step);*/
+    requestAnimationFrame(step);
 
     /* State Change Listener */
     History.Adapter.bind(window, 'statechange', function () {
