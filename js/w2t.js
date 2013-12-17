@@ -67,6 +67,8 @@ var w2t = {
                 if (args && args.callback) {
                     args.callback.apply(this);
                 }
+
+                $('body').scrollspy({ target: '.w2t-services-menu', offset: 0 });
             });
         } else {
             if ($section.css('display') == 'none') {
