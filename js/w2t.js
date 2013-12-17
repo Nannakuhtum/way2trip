@@ -23,6 +23,9 @@ var w2t = {
         },
         packageDesc: {
             url: '/parts/packages-desc.html'
+        },
+        terms:{
+            url: '/parts/terms.html'
         }
     },
 
@@ -47,10 +50,11 @@ var w2t = {
         function show() {
             w2t.$showing = w2t.$showing || $('#main');          
 
-            $section.appendTo(document.body);//this to bottom of the body, so animation is always slideUp
+            $section.insertBefore($('#footer'));//this to bottom of the body, so animation is always slideUp
 
             w2t.$showing.slideUp(animate && w2t.animateTime, w2t.screenShowEasing);//hide
             $section.slideDown(animate && w2t.animateTime, w2t.screenShowEasing);//show
+           // $('html').css('height','100%')
 
             w2t.$showing = $section;
         }
@@ -118,9 +122,9 @@ var w2t = {
 
 //Dom On Ready
 $(function () {
-    var topPx = 0, leftPx = 0, sp = 0.1, urlParamSection;
+    /*var topPx = 0, leftPx = 0, sp = 1, urlParamSection;
 
-    /*function step(timestamp) {
+    function step(timestamp) {
         leftPx = leftPx % 1680 - sp;
         topPx = topPx % 1050 - sp;
         $('body').css('backgroundPosition', leftPx + 'px ' + topPx + 'px');

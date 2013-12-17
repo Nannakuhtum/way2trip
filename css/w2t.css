@@ -4,21 +4,45 @@ body {
     font-family: 'Exo 2', sans-serif;
 }
 
+html,body{
+    height: 100%
+}
+
+
 /*BS overrides*/
 .navbar-default {
     padding: 0 15px;
     margin: 0 15px;
 }
 
+.footer{
+    min-height: 30px;
+    padding:5px;
+}
+
+.footer a{
+    color: rgba(75,75,75,0.7)  
+}
+
 .w2t-container {
     padding: 0 15px;
+}
+
+.w2t-center
+{
+   max-width: 1000px;
+   margin-left: auto;
+   margin-right: auto; 
 }
 
 /*screen*/
 .s {
     width: 100%;
+    min-height: 100%;
     height: auto;
     padding-top: 50px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
     /*display:  none;*/
 }
 
