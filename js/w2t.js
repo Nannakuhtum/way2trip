@@ -24,15 +24,15 @@ var w2t = {
         packageDesc: {
             url: '/parts/packages-desc.html'
         },
-        terms:{
+        terms: {
             url: '/parts/terms.html'
         }
     },
 
-    getRoute: function(section, isPackage){
-        if(!section) return null;
+    getRoute: function (section, isPackage) {
+        if (!section) return null;
 
-        if(isPackage) {
+        if (isPackage) {
             return {
                 url: this.partsBaseUrl + '/packages/' + section + '.html'
             }
@@ -48,13 +48,14 @@ var w2t = {
         var $section = $('#' + sectionName), animate = args && args.animate || true;
 
         function show() {
-            w2t.$showing = w2t.$showing || $('#main');          
+            w2t.$showing = w2t.$showing || $('#main');
 
-            $section.insertBefore($('#footer'));//this to bottom of the body, so animation is always slideUp
-
-            w2t.$showing.slideUp(animate && w2t.animateTime, w2t.screenShowEasing);//hide
-            $section.slideDown(animate && w2t.animateTime, w2t.screenShowEasing);//show
-           // $('html').css('height','100%')
+            //$section.insertBefore($('#footer')); //this to bottom of the body, so animation is always slideUp
+            
+            //w2t.$showing.slideUp(animate && w2t.animateTime, w2t.screenShowEasing); //hide
+            $section.slideDown(animate && w2t.animateTime, w2t.screenShowEasing); //show
+            w2t.$showing.hide();
+            // $('html').css('height','100%')
 
             w2t.$showing = $section;
         }
@@ -63,7 +64,7 @@ var w2t = {
             $.get(this.getRoute(sectionName, args && args.isPackage).url, {
                 time: Math.random
             }, function (data) {
-                $('body').append(data);
+                $('.section-container').append(data);
                 $section = $('#' + sectionName);
 
                 show();
@@ -72,7 +73,16 @@ var w2t = {
                     args.callback.apply(this);
                 }
 
-                $('body').scrollspy({ target: '.w2t-services-menu', offset: 0 });
+                if (sectionName === 'services') {
+                    $('body').scrollspy({ target: '.w2t-services-menu', offset: 0 });
+
+                    $('.w2t-services-menu li').click(function () {
+                        $(this).siblings().removeClass('active');
+
+                        $(this).addClass('active');
+                    });
+
+                }
             });
         } else {
             if ($section.css('display') == 'none') {
@@ -125,11 +135,11 @@ $(function () {
     /*var topPx = 0, leftPx = 0, sp = 1, urlParamSection;
 
     function step(timestamp) {
-        leftPx = leftPx % 1680 - sp;
-        topPx = topPx % 1050 - sp;
-        $('body').css('backgroundPosition', leftPx + 'px ' + topPx + 'px');
+    leftPx = leftPx % 1680 - sp;
+    topPx = topPx % 1050 - sp;
+    $('body').css('backgroundPosition', leftPx + 'px ' + topPx + 'px');
 
-        requestAnimationFrame(step);
+    requestAnimationFrame(step);
     }
 
     requestAnimationFrame(step);*/
@@ -160,12 +170,12 @@ $(function () {
     });
 
     //On page load route to appropriate screen
-    if(urlParamSection = w2t.utils.getParameterByName('section')){
+    if (urlParamSection = w2t.utils.getParameterByName('section')) {
         History.replaceState({
-                section: urlParamSection
-            }, 
-            'Way2Trip - ' + urlParamSection.toUpperCase(), 
-            window.location.protocol+"//"+window.location.host + "?section=" + urlParamSection);
+            section: urlParamSection
+        },
+            'Way2Trip - ' + urlParamSection.toUpperCase(),
+            window.location.protocol + "//" + window.location.host + "?section=" + urlParamSection);
     }
 
     /*UI Initializations & Listeners*/
@@ -182,7 +192,7 @@ w2t.utils = {
         name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), searchStr = location.search || location.hash,
         results = regex.exec(searchStr);
-        
+
         console.log(searchStr);
         return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }

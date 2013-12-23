@@ -1,13 +1,15 @@
 body {
-    background-color: #A7D4FC;
     height: auto;
     font-family: 'Exo 2', sans-serif;
 }
 
-html,body{
+html,body {
     height: 100%
 }
 
+h1,h2,h3 {
+    font-family: 'Exo 2', sans-serif;
+}
 
 /*BS overrides*/
 .navbar-default {
@@ -24,15 +26,54 @@ html,body{
     color: rgba(75,75,75,0.7)  
 }
 
+.page-header {
+    margin:  20px 0;
+}
+
+.w2t-header {
+    /*height:  100px;*/
+}
+
+.w2t-menu-container {
+    margin-top: 30px;
+    width: 1000px;
+    height: 70px; 
+}
+
+.w2t-menu {
+    padding: 5px;
+    width:  30%;
+    float:  left;
+}
+
+.w2t-logo {
+    width: 40%;
+    float:  left;
+}
+
+.w2t-menu-contact {
+    position:  absolute;
+    top:  0;
+    right: 0;
+    height:  30px;
+    padding:  5px 5px 0 0;
+}
+
 .w2t-container {
     padding: 0 15px;
 }
 
 .w2t-center
 {
-   max-width: 1000px;
+   /*max-width: 1000px;*/
    margin-left: auto;
    margin-right: auto; 
+}
+
+.w2t-contact-link {
+    position:  absolute; 
+    top:  10px; 
+    right:  30px;
 }
 
 /*screen*/
@@ -40,7 +81,6 @@ html,body{
     width: 100%;
     min-height: 100%;
     height: auto;
-    padding-top: 50px;
     padding-bottom: 20px;
     margin-bottom: 20px;
     /*display:  none;*/
@@ -75,7 +115,7 @@ html,body{
     float: left;
     background: #fff;
     position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
     overflow: hidden;
     cursor: pointer;
 }
@@ -114,6 +154,10 @@ html,body{
     margin-top: 5px;
 }
 
+.m-t-15 {
+    margin-top: 15px;
+}
+
 /*.bg1
 {
     background: url(../images/bg1.png) top left repeat;
@@ -140,10 +184,11 @@ html,body{
     width:  15%;
     min-width: 100px;
     float:  left;
+    padding:  5px;
 }
 
 .w2t-services-menu li.active {
-    box-shadow: 5px 5px 2px red;
+    background-color: #EEEEEE;
 }
 
 .w2t-services-content {
