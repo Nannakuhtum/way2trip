@@ -1,6 +1,12 @@
 body {
     height: auto;
     font-family: 'Exo 2', sans-serif;
+    color: #012E55;
+    background: url(../images/bg_2.png) repeat;
+}
+
+a {
+    color: #012E55;
 }
 
 html,body {
@@ -30,8 +36,54 @@ h1,h2,h3 {
     margin:  20px 0;
 }
 
+.color-bar-container {
+    height:  5px;
+}
+
+.color-bar {
+    height: 100%;
+    width: 20%;
+}
+
+.color-turquoise {
+    background: #1ABC9C;
+    float: left;
+}
+.color-redhot {
+    background: #E74C3C;
+    float: left;
+}
+.color-cool {
+    background: #3498DB;
+    float: left;
+}
+.color-navy {
+    background: #34495E;
+    float: left;
+}
+.color-gold {
+    background: #F39C12;
+    float: left;
+}
+
+.navbar-brand {
+    width:  220px;
+    height:  100%;
+    padding-left:  0;
+    padding-top: 13px;
+}
+
+.navbar-nav-icon {
+    width: 45px;
+    padding-right: 5px;
+}
+
 .w2t-header {
     /*height:  100px;*/
+}
+
+.w2t-navicon {
+    cursor: pointer;
 }
 
 .w2t-menu-container {
@@ -46,9 +98,16 @@ h1,h2,h3 {
     float:  left;
 }
 
-.w2t-logo {
-    width: 40%;
-    float:  left;
+.w2t-logo-img {
+    width: 180px;
+    height: auto;
+    position: absolute;
+    top: 2px;
+    left: 27px;
+}
+
+.w2t-logo-txt {
+    font-size: 1.8em;
 }
 
 .w2t-menu-contact {
@@ -73,7 +132,7 @@ h1,h2,h3 {
 .w2t-contact-link {
     position:  absolute; 
     top:  10px; 
-    right:  30px;
+    right:  17px;
 }
 
 /*screen*/
@@ -150,12 +209,20 @@ h1,h2,h3 {
     margin-left: 5px;
 }
 
+.m-l-70 {
+    margin-left: 70px;
+}
+
 .m-t-5 {
     margin-top: 5px;
 }
 
 .m-t-15 {
     margin-top: 15px;
+}
+
+.m-w-320 {
+    min-width: 320px;    
 }
 
 /*.bg1
@@ -188,7 +255,11 @@ h1,h2,h3 {
 }
 
 .w2t-services-menu li.active {
-    background-color: #EEEEEE;
+    background-color: #9999A5;    
+}
+
+.w2t-services-menu li.active > a{
+    color: #FFFFFF;
 }
 
 .w2t-services-content {

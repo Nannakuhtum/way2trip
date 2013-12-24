@@ -51,11 +51,11 @@ var w2t = {
             w2t.$showing = w2t.$showing || $('#main');
 
             //$section.insertBefore($('#footer')); //this to bottom of the body, so animation is always slideUp
-            
+
             //w2t.$showing.slideUp(animate && w2t.animateTime, w2t.screenShowEasing); //hide
             $section.slideDown(animate && w2t.animateTime, w2t.screenShowEasing); //show
             w2t.$showing.hide();
-            // $('html').css('height','100%')
+            //$('html').css('height','100%')
 
             w2t.$showing = $section;
         }
@@ -81,7 +81,8 @@ var w2t = {
 
                         $(this).addClass('active');
                     });
-
+                } else if (sectionName === 'contactUs') {
+                    w2t.loadMap();
                 }
             });
         } else {
@@ -101,6 +102,32 @@ var w2t = {
     packageClick: function () {
         var section = $(this).data('package');
         History.pushState({ section: section }, 'Way2Trip - ' + section.toUpperCase(), "?section=" + section);
+    },
+
+    loadMap: function () {
+        var myLatlng = new google.maps.LatLng(12.9648087, 80.19796759999997);
+
+        var myOptions = {
+            zoom: 16,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+        var infowindow = new google.maps.InfoWindow({
+            content: ""
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: ""
+        });
+
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map, marker);
+        });
     }
 };
 
