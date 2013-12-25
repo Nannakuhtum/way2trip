@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Tours and Travels, Way2Trip, Chennai Trips, Romantic trips, Industial Visits, Best Travel packages">
         <meta name="author" content="FRIENDS">
-        <link rel="shortcut icon" href="images/favicon.png">
+        <link rel="shortcut icon" href="images/w2t-favicon.ico">
         <title>Way2Trip</title>
         <link href="css/bs/bootstrap.min.css" rel="stylesheet">
         <link href="css/bs/bootstrap-theme.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
                     <div class="hidden-xs">
                         <div class="w2t-contact-link">
                             <div>
-                                <i class="glyphicon glyphicon-phone" style="margin: 0 3px; font-size: 1.2em;"></i>+91 - 44 - 24352466
+                                <i class="glyphicon glyphicon-phone" style="margin: 0 3px; font-size: 1.2em;"></i>+91 - 44 - 43540557
                                 <i class="fa fa-envelope-o" style="margin: 0 3px 0 6px; font-size: 1.2em;"></i> info@way2trip.in
                                 <br>
                             </div>
@@ -124,7 +124,7 @@
                         <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
                         <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
                     </div><!-- /.carousel -->
-                    <div class="row">
+                    <div class="row dn">
                         <div class="col-sm-6">
                             <div class="w2t-column">
                                 <h2 class="title font-effect-shadow-multiple">Who we are</h2>

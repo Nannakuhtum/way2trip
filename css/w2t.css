@@ -209,6 +209,10 @@ h1,h2,h3 {
     margin-left: 5px;
 }
 
+.m-l-26 {
+    margin-left: 26px;
+}
+
 .m-l-70 {
     margin-left: 70px;
 }
@@ -266,3 +270,4 @@ h1,h2,h3 {
     width: 85%;
     float:  right;
 }
+
