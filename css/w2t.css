@@ -78,6 +78,14 @@ h1,h2,h3 {
     padding-right: 5px;
 }
 
+/*carousel overrides*/
+.carousel-caption
+{
+    background: rgba(0,0,0,0.75);
+    bottom: 30%;
+    border-radius: 50px;
+}
+
 .w2t-header {
     /*height:  100px;*/
 }
