@@ -18,15 +18,15 @@
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
+                    <!--[if lt IE 9]>
+                                    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                                    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+                                <![endif]-->
     </head>
     <body class="bg1">
 
         <!-- navbar -->
-        <div class="navbar navbar-static w2t-header m-w-320" role="navigation">
+        <div class="navbar navbar-fixed-top w2t-header m-w-320" role="navigation">
             <div class="w2t-container">
                 <div class="navbar-header">
                     <div class="w2t-navicon visible-xs pull-right" data-toggle="collapse" data-target=".navbar-collapse">
@@ -93,23 +93,24 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img src="images/1-main.jpg" alt="First slide">
-                                <div class="container">
-                                    <div class="carousel-caption">
-                                        <h1>Glimpses of Europe</h1>
-                                        <p></p>
-                                        <p>Greece</p>
+                                <a href="" class="menu" data-section="domestic">
+                                    <img src="images/d_collage.jpg" alt="Second slide">
+                                    <div class="container">
+                                        <div class="carousel-caption">
+                                            <h1>Explore Our Delightful Domestic Packages</h1>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="item">
-                                <img src="images/2-main.jpg" alt="Second slide">
-                                <div class="container">
-                                    <div class="carousel-caption">
-                                        <h1>Discover Africa</h1>
-                                        <p>Kenya</p>
+                                <a href="" class="menu" data-section="international">
+                                    <img src="images/i_collage.jpg" alt="First slide">
+                                    <div class="container">
+                                        <div class="carousel-caption">
+                                            <h1>Explore Our Impressive International Packages</h1>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div class="item">
                                 <img src="images/3-main.jpg" alt="Third slide">

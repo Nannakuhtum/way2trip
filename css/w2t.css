@@ -87,7 +87,7 @@ h1,h2,h3 {
 }
 
 .w2t-header {
-    /*height:  100px;*/
+    background: url(../images/bg_2.png);
 }
 
 .w2t-navicon {
@@ -132,7 +132,7 @@ h1,h2,h3 {
 
 .w2t-center
 {
-   /*max-width: 1000px;*/
+   max-width: 1000px;
    margin-left: auto;
    margin-right: auto; 
 }
@@ -141,6 +141,10 @@ h1,h2,h3 {
     position:  absolute; 
     top:  10px; 
     right:  17px;
+}
+
+.section-container {
+    margin-top: 60px;
 }
 
 /*screen*/
