@@ -105,7 +105,7 @@ var w2t = {
     },
 
     loadMap: function () {
-        var myLatlng = new google.maps.LatLng(12.9648087, 80.19796759999997);
+        var myLatlng = new google.maps.LatLng(13.037856,80.224157);
 
         var myOptions = {
             zoom: 16,
@@ -115,19 +115,12 @@ var w2t = {
 
         var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-        var infowindow = new google.maps.InfoWindow({
-            content: ""
-        });
-
         var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            title: ""
+            title: "Way2Trip"
         });
 
-        google.maps.event.addListener(marker, 'click', function () {
-            infowindow.open(map, marker);
-        });
     }
 };
 

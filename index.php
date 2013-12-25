@@ -43,7 +43,7 @@
                     <div class="hidden-xs">
                         <div class="w2t-contact-link">
                             <div>
-                                <i class="glyphicon glyphicon-phone" style="margin: 0 3px; font-size: 1.2em;"></i>+91 9999999999
+                                <i class="glyphicon glyphicon-phone" style="margin: 0 3px; font-size: 1.2em;"></i>+91 - 44 - 24352466
                                 <i class="fa fa-envelope-o" style="margin: 0 3px 0 6px; font-size: 1.2em;"></i> info@way2trip.in
                                 <br>
                             </div>
