@@ -1,6 +1,6 @@
 //Global namespace
 var w2t = {
-    animateTime: 600,
+    animateTime: 2000,
     $showing: null,
     screenShowEasing: 'easeOutExpo',
 
@@ -43,30 +43,62 @@ var w2t = {
 
     //These functions have to be called after dom ready
     showSection: function (sectionName, args) {
-        console.log(sectionName, args);
         sectionName = sectionName || 'main';
         var $section = $('#' + sectionName), animate = args && args.animate || true;
+        var $sectionContainer = $('.section-container'), $overlay = $('#overlay');
+
+        function flyPlane() {
+            var $airPlane = $('#airPlane'), $titleFlag = $('#titleFlag'), $pageHeader = $section.find($('.page-header'));
+            var minScreenWidth = 768, w = $airPlane.outerWidth(), h = $airPlane.outerHeight();
+            var planeH = planeW = 256, headerH = 60;
+            //w = w < minScreenWidth ? minScreenWidth : w;
+            var bgX = (w - planeW) / 2, bgY = h - (headerH + planeH + 20);
+
+            //Set initial position 
+            $airPlane.css('top', h + 120);
+            $titleFlag.append($pageHeader.find('h1'));
+
+            //Set bg position
+            $airPlane.css('backgroundPosition', bgX + 'px ' + bgY + 'px');
+            //Position title flag div
+            $titleFlag.css('top', (h - 60) + 'px').css('left', ((w - $titleFlag.width()) / 2) + 'px');
+
+            $airPlane.animate({
+                //backgroundPosition: '50% 0%'
+                top: -h + (headerH * 2)
+            }, {
+                duration: 2000,
+                complete: function () {
+                    //console.log('completed');
+                    $pageHeader.append($('#titleFlag > h1'));
+                }
+            });
+        }
 
         function show() {
             w2t.$showing = w2t.$showing || $('#main');
+            $sectionContainer.append($section); // move to last to slide always slides up
 
-            //$section.insertBefore($('#footer')); //this to bottom of the body, so animation is always slideUp
+            flyPlane();
 
-            //w2t.$showing.slideUp(animate && w2t.animateTime, w2t.screenShowEasing); //hide
+            w2t.$showing.slideUp(animate && w2t.animateTime, w2t.screenShowEasing); //hide
+            //w2t.$showing.hide();
             $section.slideDown(animate && w2t.animateTime, w2t.screenShowEasing); //show
-            w2t.$showing.hide();
-            //$('html').css('height','100%')
+            
+            window.scrollTo(0, 0);
 
             w2t.$showing = $section;
         }
 
         if (!$section.length) {
-            $.get(this.getRoute(sectionName, args && args.isPackage).url, {
-                time: Math.random
-            }, function (data) {
-                $('.section-container').append(data);
+            $overlay.show();
+
+            $.get(this.getRoute(sectionName, args && args.isPackage).url,
+            function (data) {
+                $sectionContainer.append(data);
                 $section = $('#' + sectionName);
 
+                $overlay.hide();
                 show();
 
                 if (args && args.callback) {
@@ -87,13 +119,13 @@ var w2t = {
             });
         } else {
             if ($section.css('display') == 'none') {
+                //setTimeout(show, 5000);
                 show();
             }
         }
     },
 
     columnHover: function () {
-        console.log($(this));
         $(this).hoverdir({
             hoverDelay: 75
         });
@@ -105,7 +137,7 @@ var w2t = {
     },
 
     loadMap: function () {
-        var myLatlng = new google.maps.LatLng(13.037856,80.224157);
+        var myLatlng = new google.maps.LatLng(13.037856, 80.224157);
 
         var myOptions = {
             zoom: 16,
@@ -124,45 +156,9 @@ var w2t = {
     }
 };
 
-//rAF polyfill
-(function () {
-    var lastTime = 0;
-    var vendors = ['webkit', 'moz'];
-    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-        window.cancelAnimationFrame =
-          window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
-    }
-
-    if (!window.requestAnimationFrame)
-        window.requestAnimationFrame = function (callback, element) {
-            var currTime = new Date().getTime();
-            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-            var id = window.setTimeout(function () { callback(currTime + timeToCall); },
-              timeToCall);
-            lastTime = currTime + timeToCall;
-            return id;
-        };
-
-    if (!window.cancelAnimationFrame)
-        window.cancelAnimationFrame = function (id) {
-            clearTimeout(id);
-        };
-} ());
-
 //Dom On Ready
 $(function () {
-    /*var topPx = 0, leftPx = 0, sp = 1, urlParamSection;
-
-    function step(timestamp) {
-    leftPx = leftPx % 1680 - sp;
-    topPx = topPx % 1050 - sp;
-    $('body').css('backgroundPosition', leftPx + 'px ' + topPx + 'px');
-
-    requestAnimationFrame(step);
-    }
-
-    requestAnimationFrame(step);*/
+    var urlParamSection;
 
     /* State Change Listener */
     History.Adapter.bind(window, 'statechange', function () {
@@ -190,7 +186,8 @@ $(function () {
     });
 
     //On page load route to appropriate screen
-    if (urlParamSection = w2t.utils.getParameterByName('section')) {
+    urlParamSection = w2t.utils.getParameterByName('section');
+    if (urlParamSection) {
         History.replaceState({
             section: urlParamSection
         },
@@ -200,9 +197,20 @@ $(function () {
 
     /*UI Initializations & Listeners*/
     $('.menu').click(function (e) {
-        e.preventDefault();
         var section = $(this).data('section');
         History.pushState({ section: section }, 'Way2Trip - ' + section.toUpperCase(), "?section=" + section);
+
+        if (e.preventDefault) {
+            e.preventDefault();
+        } else {
+            e.returnValue = false;
+        }
+    });
+
+    $(document).on('click', '.navbar-collapse.in', function (e) {
+        if ($(e.target).is('a')) {
+            $(this).collapse('hide');
+        }
     });
 });
 
@@ -213,7 +221,6 @@ w2t.utils = {
         var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), searchStr = location.search || location.hash,
         results = regex.exec(searchStr);
 
-        console.log(searchStr);
         return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 }

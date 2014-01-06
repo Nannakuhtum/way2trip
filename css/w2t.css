@@ -9,12 +9,16 @@ a {
     color: #012E55;
 }
 
-html,body {
-    height: 100%
+html, body {
+    height: 100%;
 }
 
-h1,h2,h3 {
+h1, h2, h3 {
     font-family: 'Exo 2', sans-serif;
+}
+
+h2 {
+    font-size: 20px;
 }
 
 /*BS overrides*/
@@ -23,21 +27,21 @@ h1,h2,h3 {
     margin: 0 15px;
 }
 
-.footer{
+.footer {
     min-height: 30px;
-    padding:5px;
+    padding: 5px;
 }
 
-.footer a{
-    color: rgba(75,75,75,0.7)  
+.footer a {
+    color: rgba(75,75,75,0.7);
 }
 
 .page-header {
-    margin:  20px 0;
+    margin: 20px 0;
 }
 
 .color-bar-container {
-    height:  5px;
+    height: 5px;
 }
 
 .color-bar {
@@ -49,27 +53,31 @@ h1,h2,h3 {
     background: #1ABC9C;
     float: left;
 }
+
 .color-redhot {
     background: #E74C3C;
     float: left;
 }
+
 .color-cool {
     background: #3498DB;
     float: left;
 }
+
 .color-navy {
     background: #34495E;
     float: left;
 }
+
 .color-gold {
     background: #F39C12;
     float: left;
 }
 
 .navbar-brand {
-    width:  220px;
-    height:  100%;
-    padding-left:  0;
+    width: 220px;
+    height: 100%;
+    padding-left: 0;
     padding-top: 13px;
 }
 
@@ -79,8 +87,7 @@ h1,h2,h3 {
 }
 
 /*carousel overrides*/
-.carousel-caption
-{
+.carousel-caption {
     background: rgba(0,0,0,0.75);
     bottom: 30%;
     border-radius: 50px;
@@ -97,13 +104,13 @@ h1,h2,h3 {
 .w2t-menu-container {
     margin-top: 30px;
     width: 1000px;
-    height: 70px; 
+    height: 70px;
 }
 
 .w2t-menu {
     padding: 5px;
-    width:  30%;
-    float:  left;
+    width: 30%;
+    float: left;
 }
 
 .w2t-logo-img {
@@ -119,32 +126,50 @@ h1,h2,h3 {
 }
 
 .w2t-menu-contact {
-    position:  absolute;
-    top:  0;
+    position: absolute;
+    top: 0;
     right: 0;
-    height:  30px;
-    padding:  5px 5px 0 0;
+    height: 30px;
+    padding: 5px 5px 0 0;
 }
 
 .w2t-container {
     padding: 0 15px;
 }
 
-.w2t-center
-{
-   max-width: 1000px;
-   margin-left: auto;
-   margin-right: auto; 
+.w2t-center {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .w2t-contact-link {
-    position:  absolute; 
-    top:  10px; 
-    right:  17px;
+    position: absolute;
+    top: 10px;
+    right: 17px;
 }
 
 .section-container {
     margin-top: 60px;
+}
+
+.w2t-package-name {
+    border-bottom: 1px solid;
+    font-weight: bold;
+    height: 30px;
+    padding: 5px 0px;
+    text-align: center;
+}
+
+#overlay {    
+    background: url(../images/loading.gif) no-repeat center center rgba(255, 255, 255, 0.75);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10001;
+    display: none;
 }
 
 /*screen*/
@@ -183,7 +208,6 @@ h1,h2,h3 {
 
 /*Image Hover*/
 .da-thumbs figure {
-    float: left;
     background: #fff;
     position: relative;
     box-shadow: 0 1px 3px rgba(0,0,0,0.5);
@@ -237,49 +261,92 @@ h1,h2,h3 {
     margin-top: 15px;
 }
 
-.m-w-320 {
-    min-width: 320px;    
+.m-t-45 {
+    margin-top: 45px;
 }
 
-/*.bg1
-{
-    background: url(../images/bg1.png) top left repeat;
-    background-position: -200px -100px;
-}*/
+.m-w-768 {
+    min-width: 320px;
+}
 
-.bgh
-{
+.bgh {
     background: url(../images/bgh.png) top left repeat;
 }
 
-.title
-{
-   font-size: x-large; 
-   font-weight: bold
+.title {
+    font-size: x-large;
+    font-weight: bold;
 }
 
-.dbi
-{
+.w2t-services-section .title {
+    font-size: large;
+}
+
+.dbi {
     display: inline-block;
 }
 
 .w2t-services-menu {
-    width:  15%;
+    width: 15%;
     min-width: 100px;
-    float:  left;
-    padding:  5px;
+    float: left;
+    padding: 5px;
 }
 
 .w2t-services-menu li.active {
-    background-color: #9999A5;    
-}
-
-.w2t-services-menu li.active > a{
-    color: #FFFFFF;
+    background-color: #9999A5;
 }
 
 .w2t-services-content {
     width: 85%;
-    float:  right;
+    float: right;
 }
 
+.w2t-services-section {
+    padding-left: 15px;
+    margin-left: 10px;
+    border-left: 1px dotted grey;
+}
+
+/*Plane Animation*/
+#airPlane {
+    min-width: 320px;
+    position: fixed;
+    top: 256px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url(../images/airplane.png) 50% 90% no-repeat;
+    z-index: 100;
+}
+
+#titleFlag {
+    background: url(../images/bg_2.png);
+    position: absolute;
+    max-width: 768px;
+    box-shadow: 0 0 1em #090909;
+}
+
+#titleFlag > h1 {
+    margin: 5px;
+}
+
+.page-header {
+    height: 50px;
+}
+
+/*Media Queries*/
+@media (max-width: 768px) {
+    .w2t-services-content {
+        width: 100%;
+        float: right;
+    }
+
+    body {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+}
