@@ -212,6 +212,30 @@ $(function () {
             $(this).collapse('hide');
         }
     });
+    
+    /*Home page animation*/
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function (callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function () { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    var topPx = 0, leftPx = 0, sp = 1, urlParamSection;
+
+    function step(timestamp) {
+        leftPx = leftPx % 1680 - sp;
+        topPx = topPx % 1050 - sp;
+        $('body').css('backgroundPosition', leftPx + 'px ' + topPx + 'px');
+
+        requestAnimationFrame(step);
+    }
+
+   requestAnimationFrame(step);
+
 });
 
 //Utils

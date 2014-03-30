@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <div class="section-container m-w-768">
+        <div class="section-container m-w-768 home">
             <!-- Main Section-->
             <section class="s w2t-center" id="main">
                 <div class="w2t-container">
@@ -166,8 +166,10 @@
             </section>
         </div>
 
-        <div id="footer" class="footer m-w-768 navbar-default" role="navigation">
-            <a class=" menu" data-section="terms" href="">Terms and conditions</a>
+        <div id="footer" class="footer" role="navigation">
+            <a class="menu terms" data-section="terms" href="">Terms and conditions</a>
+            <a class="menu" href="http://www.facebook.com/way2trip" target="_blank"><i class="fa fa-facebook-square"></i></a>
+            <a class="menu" href="http://www.twitter.com/info_way2trip" target="_blank"><i class="fa fa-twitter"></i></a>
         </div>
 
         <div id="airPlane">

@@ -2,7 +2,7 @@ body {
     height: auto;
     font-family: 'Exo 2', sans-serif;
     color: #012E55;
-    background: url(../images/bg_2.png) repeat;
+    background: url(../images/ballon.png) repeat;
 }
 
 a {
@@ -29,11 +29,19 @@ h2 {
 
 .footer {
     min-height: 30px;
-    padding: 5px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 5px 15px 5px 15px;
 }
 
 .footer a {
     color: rgba(75,75,75,0.7);
+}
+
+.footer .terms {
+    margin-right: 5px;
 }
 
 .page-header {
@@ -93,7 +101,7 @@ h2 {
     border-radius: 50px;
 }
 
-.w2t-header {
+.w2t-header,.footer {
     background: url(../images/bg_2.png);
 }
 
