@@ -1,6 +1,6 @@
 //Global namespace
 
-var baseName = '/way2trip/'
+var baseName = '/'
 
 var w2t = {
     animateTime: 2000,
