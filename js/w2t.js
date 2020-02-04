@@ -1,31 +1,34 @@
 //Global namespace
+
+var baseName = '/way2trip/'
+
 var w2t = {
     animateTime: 2000,
     $showing: null,
     screenShowEasing: 'easeOutExpo',
 
-    partsBaseUrl: '/way2trip/parts/',
+    partsBaseUrl: baseName + 'parts/',
     route: {
         main: {
-            url: '/way2trip/'
+            url: baseName
         },
         international: {
-            url: '/way2trip/parts/packages-i.html'
+            url: baseName + 'parts/packages-i.html'
         },
         domestic: {
-            url: '/way2trip/parts/packages-d.html'
+            url: baseName + 'parts/packages-d.html'
         },
         services: {
-            url: '/way2trip/parts/services.html'
+            url: baseName + 'parts/services.html'
         },
         contactUs: {
-            url: '/way2trip/parts/contact-us.html'
+            url: baseName + 'parts/contact-us.html'
         },
         packageDesc: {
-            url: '/way2trip/parts/packages-desc.html'
+            url: baseName + 'parts/packages-desc.html'
         },
         terms: {
-            url: '/way2trip/parts/terms.html'
+            url: baseName + 'parts/terms.html'
         }
     },
 
@@ -34,7 +37,7 @@ var w2t = {
 
         if (isPackage) {
             return {
-                url: this.partsBaseUrl + '/packages/' + section + '.html'
+                url: this.partsBaseUrl + section + '.html'
             }
         } else {
             return this.route[section];
