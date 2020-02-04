@@ -4,28 +4,28 @@ var w2t = {
     $showing: null,
     screenShowEasing: 'easeOutExpo',
 
-    partsBaseUrl: '/way2trip-parts/',
+    partsBaseUrl: '/way2trip/parts/',
     route: {
         main: {
-            url: '/'
+            url: '/way2trip/'
         },
         international: {
-            url: '/way2trip-parts/packages-i.html'
+            url: '/way2trip/parts/packages-i.html'
         },
         domestic: {
-            url: '/way2trip-parts/packages-d.html'
+            url: '/way2trip/parts/packages-d.html'
         },
         services: {
-            url: '/way2trip-parts/services.html'
+            url: '/way2trip/parts/services.html'
         },
         contactUs: {
-            url: '/way2trip-parts/contact-us.html'
+            url: '/way2trip/parts/contact-us.html'
         },
         packageDesc: {
-            url: '/way2trip-parts/packages-desc.html'
+            url: '/way2trip/parts/packages-desc.html'
         },
         terms: {
-            url: '/way2trip-parts/terms.html'
+            url: '/way2trip/parts/terms.html'
         }
     },
 
@@ -34,7 +34,7 @@ var w2t = {
 
         if (isPackage) {
             return {
-                url: this.partsBaseUrl + '/' + section + '.html'
+                url: this.partsBaseUrl + '/packages/' + section + '.html'
             }
         } else {
             return this.route[section];
